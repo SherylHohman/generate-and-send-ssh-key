@@ -17,13 +17,15 @@ SSH_OPTS="-o PubkeyAuthentication=no"
 
 function usage() {
 	echo "Specify some parameters, ${1}valid ones are:"
-    echo "  -u(--user) <username>, default: ${USER}"
-    echo "  -f(--file) <file>, default: ${FILENAME}"
-    echo "  -h(--host) <hostname>, default: ${HOST}"
-    echo "  -p(--port) <port>, default: <default ssh port>"
-    echo "  -k(--keysize) <size>, default: ${KEYSIZE}"
-    echo "  -t(--keytype) <type>, default: ${KEYTYPE}"
-    echo "  -P(--passphrase) <key-passphrase>, default: ${PASSPHRASE}"
+    echo "  -u (--user)       <username>, default: ${USER}"
+    echo "  -f (--file)       <file>,     default: ${FILENAME}"
+    echo "  -h (--host)       <hostname>, default: ${HOST}"
+    
+    echo "  -p (--port)       <port>,     default: <default ssh port>"
+    echo "  -k (--keysize)    <size>,     default: ${KEYSIZE}"
+    echo "  -t (--keytype)    <type>,     default: ${KEYTYPE}"
+    
+    echo "  -P (--passphrase) <key-passphrase>, default: ${PASSPHRASE}"
     exit 2
 }
 
@@ -93,7 +95,7 @@ fi
 # perform the actual work
 if [ -f $FILENAME ]
 then
-    echo Usig existing key
+    echo Using existing key
 else
     echo Creating a new key using $SSH-KEYGEN
     $SSH_KEYGEN -t $KEYTYPE -b $KEYSIZE  -f $FILENAME -N "$PASSPHRASE"
